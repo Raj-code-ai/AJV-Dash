@@ -1,12 +1,5 @@
 import mongoose from "mongoose";
-import dns from "dns";
 
-// Help Windows/local DNS resolve mongodb+srv SRV records
-try {
-  dns.setServers(["8.8.8.8", "1.1.1.1"]);
-} catch {
-  // ignore
-}
 interface MongooseCache {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
@@ -61,8 +54,8 @@ export async function connectDB(): Promise<typeof mongoose> {
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {
       bufferCommands: false,
-      serverSelectionTimeoutMS: 10000,
-      connectTimeoutMS: 10000,
+      serverSelectionTimeoutMS: 15000,
+      connectTimeoutMS: 15000,
     });
   }
 
