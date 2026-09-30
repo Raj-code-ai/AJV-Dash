@@ -64,6 +64,22 @@ export async function POST(request: NextRequest) {
     return response;
   } catch (err) {
     console.error("POST /api/auth/login:", err);
+    const message = err instanceof Error ? err.message : "Login failed";
+    // Surface config/DB issues clearly on production
+    if (
+      message.includes("MONGODB_URI") ||
+      message.includes("localhost") ||
+      message.includes("buffering timed out") ||
+      message.includes("ECONNREFUSED") ||
+      message.includes("SSL") ||
+      message.includes("authentication failed") ||
+      message.includes("Server selection timed out")
+    ) {
+      return error(
+        "Database connection failed. Check MONGODB_URI and Atlas Network Access on Vercel.",
+        500
+      );
+    }
     return error("Login failed", 500);
   }
 }
