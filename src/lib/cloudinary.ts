@@ -31,7 +31,10 @@ export function isImageKitConfigured(): boolean {
   return (
     !PLACEHOLDER_VALUES.has(publicKey) &&
     !PLACEHOLDER_VALUES.has(privateKey) &&
+    publicKey.startsWith("public_") &&
+    privateKey.startsWith("private_") &&
     Boolean(endpoint) &&
+    endpoint.startsWith("https://") &&
     !PLACEHOLDER_VALUES.has(endpoint)
   );
 }

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
+import { isImageKitConfigured } from "@/lib/cloudinary";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -11,11 +12,15 @@ export async function GET() {
     process.env.MONGODB_URI?.includes("localhost") ||
     false;
 
+  // Booleans only — never return secret values
   const payload: Record<string, unknown> = {
     ok: false,
     vercel: Boolean(process.env.VERCEL),
     hasMongoUri,
     uriLooksLocal,
+    imageKitConfigured: isImageKitConfigured(),
+    hasJwtSecret: Boolean(process.env.JWT_SECRET?.trim()) &&
+      process.env.JWT_SECRET !== "dev_secret_change_me_please_32chars_min",
     nodeEnv: process.env.NODE_ENV || null,
   };
 

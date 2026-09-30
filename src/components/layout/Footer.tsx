@@ -122,8 +122,17 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 py-4 text-center text-xs text-slate-400">
-        © {year} {settings?.universityName || "University"} —{" "}
-        {settings?.departmentName || "Department"}. All rights reserved.
+        <p>
+          © {year} {settings?.universityName || "University"} —{" "}
+          {settings?.departmentName || "Department"}. All rights reserved.
+        </p>
+        <p className="mt-1.5 text-slate-300">
+          Creator and developer{" "}
+          <span className="font-medium text-white">Raj Ahmed</span>
+        </p>
+        <p className="mt-0.5">
+          Under I3C Club — I3C = Idea Innovation and Incubation Centre
+        </p>
       </div>
     </footer>
   );
