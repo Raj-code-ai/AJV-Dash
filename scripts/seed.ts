@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import fs from "fs";
 import path from "path";
+import dns from "dns";
 import User from "../src/models/User";
 import Faculty from "../src/models/Faculty";
 import Achievement from "../src/models/Achievement";
@@ -9,6 +10,12 @@ import GalleryImage from "../src/models/GalleryImage";
 import Notice from "../src/models/Notice";
 import SiteSettings from "../src/models/SiteSettings";
 
+// Some Windows/network DNS setups fail SRV lookups for mongodb+srv
+try {
+  dns.setServers(["8.8.8.8", "1.1.1.1"]);
+} catch {
+  // ignore
+}
 /** Load KEY=VALUE pairs from a .env-style file into process.env (no overwrite). */
 function loadEnvFile(filePath: string) {
   if (!fs.existsSync(filePath)) return;

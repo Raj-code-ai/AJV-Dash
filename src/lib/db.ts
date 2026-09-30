@@ -1,5 +1,12 @@
 import mongoose from "mongoose";
+import dns from "dns";
 
+// Help Windows/local DNS resolve mongodb+srv SRV records
+try {
+  dns.setServers(["8.8.8.8", "1.1.1.1"]);
+} catch {
+  // ignore
+}
 interface MongooseCache {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
