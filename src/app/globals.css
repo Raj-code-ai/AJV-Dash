@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f4f7fb;
+  --foreground: #0b1f3a;
+  --muted: #64748b;
+  --card: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(15, 61, 110, 0.1);
+  --accent: #0d9488;
+  --navy: #0b1f3a;
+  --ring: rgba(13, 148, 136, 0.35);
+}
+
+.dark {
+  --background: #07111f;
+  --foreground: #e8eef7;
+  --muted: #94a3b8;
+  --card: rgba(18, 38, 63, 0.72);
+  --card-border: rgba(148, 163, 184, 0.16);
+  --accent: #2dd4bf;
+  --navy: #0b1f3a;
+  --ring: rgba(45, 212, 191, 0.35);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  min-height: 100vh;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  * {
+    @apply border-slate-200 dark:border-slate-700;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-[var(--card-border)] bg-[var(--card)] shadow-glass backdrop-blur-xl;
+  }
+
+  .glass-strong {
+    @apply border border-[var(--card-border)] bg-white/85 shadow-soft backdrop-blur-2xl dark:bg-academic-ink/85;
+  }
+
+  .page-shell {
+    @apply relative min-h-screen bg-page-light dark:bg-page-dark;
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)];
+  }
+
+  .link-nav {
+    @apply relative text-sm font-medium text-academic-ink/80 transition hover:text-academic-teal dark:text-slate-200 dark:hover:text-teal-300;
+  }
+
+  .prose-academic p {
+    @apply leading-relaxed text-slate-600 dark:text-slate-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
