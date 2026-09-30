@@ -1,8 +1,8 @@
-# University Department CMS
+﻿# University Department CMS
 
 A full-stack **University Department Content Management System** built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, **MongoDB/Mongoose**, and **ImageKit**.
 
-The public website and admin dashboard are driven entirely by **Site Settings** and content APIs — university and department names are **never hardcoded** in the UI. A Super Admin can rebrand the entire site for any institution.
+The public website and admin dashboard are driven entirely by **Site Settings** and content APIs ΓÇö university and department names are **never hardcoded** in the UI. A Super Admin can rebrand the entire site for any institution.
 
 ---
 
@@ -15,7 +15,7 @@ The public website and admin dashboard are driven entirely by **Site Settings** 
 - Achievements (filter by year / category / search)
 - Gallery albums + lightbox
 - Notices (important + latest, PDF links, expiry-aware)
-- Resources (external Notes Portal + Question Paper Repository links only — **no note storage**)
+- Resources (external Notes Portal + Question Paper Repository links only ΓÇö **no note storage**)
 - Contact page + form
 
 ### Admin dashboard
@@ -120,9 +120,9 @@ Admin login: [http://localhost:5000/admin/login](http://localhost:5000/admin/log
 
 ### Super Admin (`super_admin`)
 - Full access to all admin CRUD
-- **Site Settings** — rebrand university/department names, logos, hero, contact, portals, about content, social links, stats
-- **Users** — create / enable / disable department admins
-- **Activity Logs** — audit trail
+- **Site Settings** ΓÇö rebrand university/department names, logos, hero, contact, portals, about content, social links, stats
+- **Users** ΓÇö create / enable / disable department admins
+- **Activity Logs** ΓÇö audit trail
 
 ### Admin (`admin`)
 - Manage Faculty, Achievements, Gallery, Notices
@@ -133,7 +133,7 @@ Admin login: [http://localhost:5000/admin/login](http://localhost:5000/admin/log
 ## How to rebrand for any university
 
 1. Sign in as **Super Admin**
-2. Go to **Admin → Settings**
+2. Go to **Admin ΓåÆ Settings**
 3. Update:
    - University name & logo
    - Department name & logo
@@ -144,7 +144,7 @@ Admin login: [http://localhost:5000/admin/login](http://localhost:5000/admin/log
    - Social links
    - Notes Portal URL & Question Paper Repository URL
    - Homepage stats
-4. Save — the public navbar, footer, and pages load branding from `GET /api/settings`
+4. Save ΓÇö the public navbar, footer, and pages load branding from `GET /api/settings`
 
 No code changes are required to deploy for a different department.
 
@@ -155,12 +155,12 @@ No code changes are required to deploy for a different department.
 ```
 src/
   app/
-    (public)/          # Public pages (Home, About, Faculty, …)
+    (public)/          # Public pages (Home, About, Faculty, ΓÇª)
     admin/             # Admin dashboard
     api/               # Backend API routes
   components/
     layout/            # Navbar, Footer, ThemeToggle
-    ui/                # Button, Card, Modal, …
+    ui/                # Button, Card, Modal, ΓÇª
     admin/             # Admin sidebar, image upload
   hooks/useSettings.ts
   lib/fetchers.ts
@@ -184,6 +184,6 @@ src/
 ## Notes
 
 - Auth cookie is set by `POST /api/auth/login` and sent with `credentials: "include"`.
-- Resources page only shows **external links** from settings — it does not store notes or PDFs.
+- Resources page only shows **external links** from settings ΓÇö it does not store notes or PDFs.
 - Empty states are shown gracefully when APIs return no data.
 - Dark mode uses `next-themes` with Tailwind `darkMode: "class"`.
