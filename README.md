@@ -1,6 +1,6 @@
 # University Department CMS
 
-A full-stack **University Department Content Management System** built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, **MongoDB/Mongoose**, and **Cloudinary**.
+A full-stack **University Department Content Management System** built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, **MongoDB/Mongoose**, and **ImageKit**.
 
 The public website and admin dashboard are driven entirely by **Site Settings** and content APIs — university and department names are **never hardcoded** in the UI. A Super Admin can rebrand the entire site for any institution.
 
@@ -21,7 +21,7 @@ The public website and admin dashboard are driven entirely by **Site Settings** 
 ### Admin dashboard
 - Cookie-based JWT auth
 - CRUD for Faculty, Achievements, Gallery, Notices
-- Image upload via Cloudinary (`/api/admin/upload`)
+- Image upload via ImageKit only (`/api/admin/upload`)
 - **Super Admin only:** Site Settings, Users, Activity Logs
 
 ---
@@ -38,7 +38,7 @@ The public website and admin dashboard are driven entirely by **Site Settings** 
 | Toasts | react-hot-toast |
 | Database | MongoDB + Mongoose |
 | Auth | JWT in HTTP-only cookie |
-| Media | Cloudinary |
+| Media | ImageKit only |
 
 ---
 
@@ -47,7 +47,7 @@ The public website and admin dashboard are driven entirely by **Site Settings** 
 ### 1. Prerequisites
 - Node.js 18+
 - MongoDB (local or Atlas)
-- Cloudinary account (for image uploads)
+- ImageKit account (**required** for image uploads)
 
 ### 2. Install dependencies
 
@@ -69,9 +69,9 @@ cp .env.example .env.local
 | `MONGODB_URI` | MongoDB connection string |
 | `JWT_SECRET` | Long random secret (32+ chars) |
 | `JWT_EXPIRES_IN` | e.g. `7d` |
-| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name |
-| `CLOUDINARY_API_KEY` | Cloudinary API key |
-| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
+| `IMAGEKIT_PUBLIC_KEY` | ImageKit public key |
+| `IMAGEKIT_PRIVATE_KEY` | ImageKit private key |
+| `IMAGEKIT_URL_ENDPOINT` | `https://ik.imagekit.io/vvt2npcxp` |
 | `NEXT_PUBLIC_APP_URL` | `http://localhost:5000` |
 | `SEED_SUPER_ADMIN_EMAIL` | Optional seed email |
 | `SEED_SUPER_ADMIN_PASSWORD` | Optional seed password |
