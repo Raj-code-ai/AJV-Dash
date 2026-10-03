@@ -9,6 +9,7 @@ import {
   FiUsers,
   FiUserCheck,
   FiFolder,
+  FiEye,
 } from "react-icons/fi";
 import { apiGet } from "@/lib/fetchers";
 import type { AdminStats } from "@/types";
@@ -52,6 +53,18 @@ const cards = [
     label: "Admin Users",
     Icon: FiUserCheck,
     href: "/admin/users",
+  },
+  {
+    key: "totalVisits" as const,
+    label: "Total Visits",
+    Icon: FiEye,
+    href: "/",
+  },
+  {
+    key: "uniqueVisitors" as const,
+    label: "Unique Visitors",
+    Icon: FiUsers,
+    href: "/",
   },
 ];
 

@@ -12,6 +12,7 @@ import GalleryImage from "@/models/GalleryImage";
 import Notice from "@/models/Notice";
 import User from "@/models/User";
 import GalleryAlbum from "@/models/GalleryAlbum";
+import { getVisitCounts } from "@/lib/visits";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,7 @@ export async function GET(request: NextRequest) {
       admins,
       albums,
       activeNotices,
+      visits,
     ] = await Promise.all([
       Faculty.countDocuments(),
       Achievement.countDocuments(),
@@ -38,6 +40,7 @@ export async function GET(request: NextRequest) {
       User.countDocuments({ role: { $in: ["admin", "super_admin"] } }),
       GalleryAlbum.countDocuments(),
       Notice.countDocuments({ isActive: true }),
+      getVisitCounts(),
     ]);
 
     return success({
@@ -48,6 +51,8 @@ export async function GET(request: NextRequest) {
       activeNotices,
       admins,
       albums,
+      totalVisits: visits.totalVisits,
+      uniqueVisitors: visits.uniqueVisitors,
     });
   } catch (err) {
     console.error("GET /api/admin/stats:", err);

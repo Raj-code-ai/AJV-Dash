@@ -135,6 +135,8 @@ export interface AdminStats {
   activeNotices: number;
   admins: number;
   albums: number;
+  totalVisits: number;
+  uniqueVisitors: number;
 }
 
 export interface ActivityLog {

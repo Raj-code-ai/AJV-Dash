@@ -22,6 +22,7 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import EmptyState from "@/components/ui/EmptyState";
 import HomeHero from "@/components/home/HomeHero";
+import VisitorStatsSection from "@/components/visitors/VisitorStatsSection";
 
 export const dynamic = "force-dynamic";
 
@@ -286,6 +287,8 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      <VisitorStatsSection />
     </div>
   );
 }
